@@ -16,7 +16,7 @@
  */
 export const repeat = (fn, n, ...params) => {
     const arr = [];
-    arr.map()
+    arr.map();
     for(let i =0; i<n; i++){
       arr[i]= fn(...params);
     }
@@ -45,9 +45,7 @@ export const repeatDemo = () => {
  *   parameter "num2". The returned function should calculate and return the
  *   product of num1 and num2.
  */
-export const multiplyBy = (num1) => {num2 => num1 * num2;
-
-};
+export const multiplyBy = (num1) => num2 => num1 * num2;
 
 
 /**
@@ -63,7 +61,6 @@ export const tenTimes = multiplyBy(10);
  *   function to multiply 50 by 10 and returns the result.
  */
 export const tenTimesFifty = () =>  {tenTimes(50)
-
 };
 
 
