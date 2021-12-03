@@ -67,7 +67,7 @@ export const searchName = (car_data, searchTerm) => car_data
 export function searchByYear(car_data, years) {
     car_data.filter(data => car == years.reduce((arr,i) => arr[i]));
     result = result.sort(function(a, b) {
-        return a.year - b.year;
+        return b.year - a.year;
     });
     return result; 
 
