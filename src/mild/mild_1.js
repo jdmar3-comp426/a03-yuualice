@@ -8,10 +8,7 @@
  * returns: '3 + 4 = 7'
  * see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
  */
-export function sumToString(a, b) {
-
-}
-
+export const sumToString = (a, b) => `${a} + ${b} = ${a+b}`
 
 /**
  *
@@ -24,7 +21,7 @@ export function sumToString(a, b) {
  *
  */
 export function getIncreasingArray(startNumber, endNumber) {
-
+    return Array(endNumber - startNumber + 1).fill().map((_, idx) => startNumber + idx);
 }
 
 /**
@@ -35,7 +32,10 @@ export function getIncreasingArray(startNumber, endNumber) {
  * and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
  */
 export function maxAndMin(numbers) {
-
+    return {
+        min: Math.min(...numbers), 
+        max: Math.max(...numbers)
+    }; 
 }
 
 /**
@@ -49,5 +49,8 @@ export function maxAndMin(numbers) {
  *
  */
 export function countArray(array) {
-
+    return array.reduce((word,i) => {
+        word[i] = ++word[i] || 1; 
+        return word;
+     }, {}); 
 }
