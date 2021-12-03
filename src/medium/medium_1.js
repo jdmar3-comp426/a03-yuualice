@@ -9,8 +9,8 @@ import {variance} from "./data/stats_helpers.js";
  */
 export function getSum(array) {
     var sum = 0;
-    for (var i in arr) {
-        sum += arr[i];
+    for (var i in array) {
+        sum += array[i];
     }
     // var sum = array.reduce(function(sum, currValue){return sum + currValue}, 0); 
     return sum;
