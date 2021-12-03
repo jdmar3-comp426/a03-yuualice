@@ -74,7 +74,8 @@ export function removeKey(object, key) {
  If only `removeKeyNonDestructive` was called, nothing would have changed.
  */
 export function removeKeyNonDestructive(object, key) {
-
+   const{[key]: omit, ...tmpobj}=object;
+   return tmpobj;
 }
 
 /**
@@ -99,8 +100,9 @@ export function removeKeyNonDestructive(object, key) {
  * @return {*} The object with its keys removed.
  */
 export function removeKeys(object, keyList) {
+
    const result = keyList.reduce(function(arr, i) {
-      delete object.arr[i];
+      delete object.keyList[i];
    }, {}); 
    return object; 
 }
