@@ -27,7 +27,7 @@ export function identifyVariable(variable) {
 
  */
 export function identifyArray(array) {
-   const result = array.reduce (function(arr, i) {
+   const result = array.reduce(function(arr, i) {
       arr[i] = {
          type: typeof(array[i]),
          value: array[i]
