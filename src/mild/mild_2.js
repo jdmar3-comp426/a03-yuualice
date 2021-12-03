@@ -29,7 +29,7 @@ export function identifyVariable(variable) {
 export function identifyArray(array) {
    const result = array.reduce(function(arr, i) {
       arr[i] = {
-         type: typeof(array[i]),
+         type: identifyVariable(array[i]),
          value: array[i]
       };
       return arr; 
@@ -100,9 +100,15 @@ export function removeKeyNonDestructive(object, key) {
  * @return {*} The object with its keys removed.
  */
 export function removeKeys(object, keyList) {
-
-   const result = keyList.reduce(function(arr, i) {
-      delete object.keyList[i];
-   }, {}); 
-   return object; 
+   var result = {};
+   for (const [key, value] of Object.entries(object)){
+      if (!(keyList.includes(key))) {
+         result[key] = value;
+      }
+   } 
+   return result;
+   // const result = keyList.reduce(function(arr, i) {
+   //    delete object.keyList[i];
+   // }, {}); 
+   // return object; 
 }
