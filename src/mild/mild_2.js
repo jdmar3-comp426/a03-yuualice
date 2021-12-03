@@ -27,11 +27,17 @@ export function identifyVariable(variable) {
 
  */
 export function identifyArray(array) {
-   const result = array.reduce(function(arr, i) {
-      arr.push(identifyVariable(array[i]),);
-      return arr; 
-   }, {}); 
+   var result = []; 
+   for(let i = 0 ; i<array.length ; i++){
+      result.push(identifyVariable(array[i])); 
+   }
    return result; 
+
+   // const result = array.reduce(function(arr, i) {
+   //    arr.push(identifyVariable(array[i]),);
+   //    return arr; 
+   // }, {}); 
+   // return result; 
 }
 
 /**
