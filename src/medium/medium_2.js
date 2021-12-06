@@ -7,6 +7,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 see under the methods section
 */
 
+const average_mpg = (data) => {
+    return {
+        city: data.map(car => car.city_mpg)
+            .reduce((sum, mpg) => sum + mpg) / data.length,
+        highway: data.map(car => car.highway_mpg)
+            .reduce((sum, mpg) => sum + mpg) / data.length
+    }
+};
 
 /**
  * This object contains data that has to do with every car in the `mpg_data` object.
@@ -19,11 +27,17 @@ see under the methods section
  *
  * @param {allCarStats.ratioHybrids} ratio of cars that are hybrids
  */
+
+
 export const allCarStats = {
-    avgMpg: undefined,
-    allYearStats: undefined,
-    ratioHybrids: undefined,
-};
+    avgMpg: average_mpg(mpg_data),
+    allYearStats: getStatistics(mpg_data.map(car => car.year)),
+    ratioHybrids: mpg_data.filter(e => mpg_data),}
+    .map(car => car.hybrid)
+                        .reduce((sum, hybrid) => {
+                            if (hybrid) return sum + 1;
+                            return sum;
+                        }) / mpg_data.length;
 
 
 /**
@@ -84,6 +98,24 @@ export const allCarStats = {
  * }
  */
 export const moreStats = {
-    makerHybrids: undefined,
-    avgMpgByYearAndHybrid: undefined
+    makerHybrids: [...new Set, mpg_data.map(car => car.make)]
+    .map(make => {
+    return {
+        make: make, //return brand of the car 
+        hybrids: mpg_data.filter(car => car.hybrid && car.make === make)
+                .map(car => car.id) // if make is 
+    }
+    // if make is hybrid, map them as id 
+}).filter(make => make.hybrids.length > 0) // Don't show car makes with 0 hybrids.
+.sort((a, b) => b.hybrids.length - a.hybrids.length), // Sort by the number of hybrids in descending order.
+
+avgMpgByYearAndHybrid: mpg_data.reduce((curr, car) => {
+    if (!(car.year in curr))
+        // curr[car.year] = {
+        //     hybrid:average_mpg(filter(car => car.hybrid)),
+        //     notHybrid: average_mpg(filter(car => !car.hybrid))
+        //     }
+        return curr;
+    }, {}),
 };
+
